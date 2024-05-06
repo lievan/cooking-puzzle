@@ -2,6 +2,8 @@ import React from "react";
 import Header from "./Header";
 import Ingredient from "./Ingredient";
 import Warning from "./Warning"
+import { v4 as uuidv4 } from 'uuid';
+
 
 const ingredients = [];
 
@@ -29,11 +31,9 @@ function App(props) {
     event.preventDefault();
     setShowWarning(false)
   
-    var key = ingredients.length + 1;
     // don't add to actual ingredients yet
     var submittedIngredients = ingredients.map((item, index) => (item['content']))
     submittedIngredients.push(ingredientContent)
-
 
     try {
       setIsLoading(true)
@@ -55,15 +55,14 @@ function App(props) {
       const responseData = await response.json();
 
       console.log(responseData)
-
-      var prevDishTitle = dishTitle
     
       if (responseData["success"] == false) {
         setShowWarning(true)
         setIsLoading(false); // Set loading state to false
       } else {
         ingredients.push({
-          key: key,
+          // use random uiud as key
+          key: uuidv4(),
           content: ingredientContent,
         });
         dishTitle = responseData["dishTitle"]
