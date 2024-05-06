@@ -62,15 +62,15 @@ function App(props) {
         setShowWarning(true)
         setIsLoading(false); // Set loading state to false
       } else {
+        ingredients.push({
+          key: key,
+          content: ingredientContent,
+        });
         dishTitle = responseData["dishTitle"]
         dishDescription = responseData["dishDescription"]
         setIsLoading(false); // Set loading state to false
         setDishTitle(dishTitle);
         setDishDescription(dishDescription);
-        ingredients.push({
-          key: key,
-          content: ingredientContent,
-        });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
