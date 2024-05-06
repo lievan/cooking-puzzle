@@ -9,7 +9,7 @@ Add ingredients and generate a dish based on those ingredients. You can also tak
 
 
 ### Get an openai api key
-Set OPENAI_API_KEY env var to be your openai api key
+Set `OPENAI_API_KEY` env var to be your openai api key
 
 
 ### Start the backend server
