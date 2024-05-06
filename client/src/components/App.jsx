@@ -88,6 +88,13 @@ function App(props) {
       }
     });
 
+    if (ingredients.length == 0) {
+      // return to empty state if no ingredients
+      setDishTitle("");
+      setDishDescription("Generate a dish here...");
+      return
+    }
+
     try {
       setIsLoading(true)
       const response = await fetch('/dish', {
@@ -120,7 +127,6 @@ function App(props) {
 
       setIsLoading(false); // Set loading state to false
     }
-
 
   }
 
